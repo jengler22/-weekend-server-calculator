@@ -9,18 +9,31 @@
 <body>
     <h1>Server Side Calculator App</h1>
 
-    <div class="container">
+    <div>
+        <p>
+            <input type="number" id="firstInput" placeholder="first input" />
+            <input type="number" id="secondInput" placeholder="second input" />
+            <br>
+            <button onClick="useButton(event)" id="addition" value="+">+</button>
+            <button onClick="useButton(event)" id="subtraction" value="-">-</button>
+            <button onClick="useButton(event)" id="multiplication" value="*">x</button>
+            <button onClick="useButton(event)" id="division" value="/">/</button>
+            <br>
+            <button onClick="equals(event)" id="equalsButton">=</button>
+            <button onClick="clearInputs" id="clearButton">C</button>
+        </p>
+    </div>
 
-        <table>
-            <tr>
-                <td colspan="3"><input type='text'id='result' class='screen' style="text-align:right;"></td>
-                <td <input type="text" id="calcInput"><button onClick="clearScreen(event)">C</button> </td>
-
-            </tr>
-        </table>
+    <div id="historyDiv">
 
     </div>
 
-    
+    <div id="historyResultsDiv">
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="client.js"></script>
+
 </body>
 </html>
