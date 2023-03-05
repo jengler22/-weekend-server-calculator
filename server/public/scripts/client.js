@@ -1,4 +1,5 @@
 let addedValues;
+let resultsHistory;
 
 function useButton(event) {
    addedValues = event.target.value;
@@ -9,4 +10,12 @@ function equals(event) {
     let secondInput = document.querySelector('#secondNumber'.value);
     let operate = addedValues;
       console.log(firstInput,secondInput);
+
+   let numbers = {
+    first: firstInput,
+    second: secondInput,
+    operate: addedValues,
+    history: resultsHistory
+   };
+   console.log(numbers);
 }

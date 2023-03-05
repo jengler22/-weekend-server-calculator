@@ -5,7 +5,18 @@ app.use(express.json());
 
 // Global variables to store results.
 let results = [];
-let resultsHistory = [];
+
+// GET request
+app.get('/numbers', (req, res) => {
+    res.send(results);
+})
+
+
+
+
+
+
+
 
 
 
