@@ -1,5 +1,7 @@
+const { response } = require("express");
+
 let addedValues;
-let resultsHistory;
+//historyOfResults;
 
 function useButton(event) {
    addedValues = event.target.value;
@@ -15,7 +17,41 @@ function equals(event) {
     first: firstInput,
     second: secondInput,
     operate: addedValues,
-    // history: resultsHistory
+    // history: historyOfResults
    };
    console.log(numbers);
+
+   // POST request
+axios.post('/numbers', numbers).then((response)=> {
+    console.log(response);
+    getResults();
+    displayResults();
+}).catch((error)=> {
+    console.log(error);
+    alert('something is wrong');
+
+})
+};
+
+function getResults () {
+    axios.get('/numbers').then((response)=> {
+        console.log('getResults is running');
+        let serverResults =response.data;
+        let outputDiv = document.querySelector('#historyResultsDiv');
+        outputDiv.innerHTML = '';
+        for(let calculation of serverResults) {
+            outputDiv.innerHTML += `
+            <h2>${calculation}</h2>`;
+        }
+    })
+}
+
+function displayResults() {
+axios.get('history').then((response) => {
+console.log('displayResults is running');
+let displayResultsFromServer = response.data;
+let outputDiv = document.querySelector('#historyDiv');
+outputDiv.innerHTML = `
+<h2>${displayResultsFromServer[displayResultsFromServer.lenght-1]}</h2>`;
+})
 }
