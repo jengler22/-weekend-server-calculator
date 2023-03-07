@@ -7,35 +7,35 @@ app.use(express.json());
 // created 2 arrays for results and history?
 let results = [];
 let historyOfResults = [];
-
 // GET request for results
 app.get('/numbers', (req, res) => {
     res.send(results);
 })
 // GET request for History
 app.get('/history', (req, res)=> {
-    res.send(historyOfResults);
+res.send(historyOfResults);
 })
-
+// // 
 // POST request for numbers
 app.post('/numbers', (req, res) => {
     let numbersObject = req.body;
     let result;
 
-    if(numbersObject.addedValues === '+') {
+    //// all the maths
+    if(numbersObject.operatorInput === '+') {
         result = Number(numbersObject.first) + Number(numbersObject.second);
-    } else if (numbersObject.addedValues === '-') {
+    } else if (numbersObject.operatorInput === '-') {
         result = Number(numbersObject.first) - Number(numbersObject.second); 
-    } else if (numbersObject.addedValues === '*') {
+    } else if (numbersObject.operatorInput === '*') {
         result = Number(numbersObject.first) * Number(numbersObject.second);
-    } else if (numbersObject.addedValues === '/') {
+    } else if (numbersObject.operatorInput === '/') {
         result = Number(numbersObject.first) / Number(numbersObject.second);
     }
        console.log(result);
 
 
-      let calcutalion = `${numbersObject.first} ${numbersObject.addedValues} ${numbersObject.second} = ${result}`;
-      resultsHistory.push(calcutalion);
+      let calcutalion = `${numbersObject.first} ${numbersObject.operatorInput} ${numbersObject.second} = ${result}`;
+      historyOfResults.push(calcutalion);
       results.push(result);
       console.log(calcutalion);
       res.sendStatus(201);  
