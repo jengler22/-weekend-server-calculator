@@ -4,14 +4,13 @@ let addedValues;
 //historyOfResults;
 
 
-// clear inputs so chris doesnt remind me for the 3rd assingment in a row.
+
 function clearInputs () {
-    let firstInput = document.querySelector('#firstInput');
-    let secondInput = document.querySelector('#secondInput');
+    let firstInput = document.querySelector('#firstInput')
+    let secondInput = document.querySelector('#secondInput')
     firstInput.value = '';
     secondInput.value = '';
-       console.log('clearInputs in running');
-}
+};
 
 function useButton(event) {
    addedValues = event.target.value;
